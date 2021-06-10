@@ -32,7 +32,7 @@ In each `CRUDL` method, you can specify the basic method you want :
 To enable all route just pass `""` as the fourth argument. 
 To enable only some methods you can pass a parameter like `CR` to enable only Create and Read routes.
 
-```
+```go
 ...
 
 func main() {
