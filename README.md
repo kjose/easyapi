@@ -36,37 +36,37 @@ To enable only some methods you can pass a parameter like `CR` to enable only Cr
 ...
 
 func main() {
-	r := gin.Default()
+    r := gin.Default()
 
     // Init ORM
-	initORM()
-	initODM()
+    initORM()
+    initODM()
 
-	// Resources CRUD routes
-	ginh.CRUDL(r, "/users", new(model.User), "CRUL")
-	ginh.CRUDL(r, "/banks", new(model.Bank), "")
+    // Resources CRUD routes
+    ginh.CRUDL(r, "/users", new(model.User), "CRUL")
+    ginh.CRUDL(r, "/banks", new(model.Bank), "")
 }
 
 func initORM() {
-	err := orm.Init(mysql.Open(os.Getenv("DSN")), true, &logger.Config{
-		SlowThreshold:             time.Second,
-		LogLevel:                  logger.Info,
-		IgnoreRecordNotFoundError: false,
-		Colorful:                  true,
-	})
-	if err != nil {
-		log.Fatal("Error init database")
-	}
+    err := orm.Init(mysql.Open(os.Getenv("DSN")), true, &logger.Config{
+        SlowThreshold:             time.Second,
+        LogLevel:                  logger.Info,
+        IgnoreRecordNotFoundError: false,
+        Colorful:                  true,
+    })
+    if err != nil {
+        log.Fatal("Error init database")
+    }
 }
 
 func initODM() {
-	err := odm.Init(odm.Config{
-		ConnectionString: os.Getenv("MONGO_SERVER"),
-		Database:         os.Getenv("MONGO_DATABASE"),
-	}, false)
-	if err != nil {
-		log.Fatal("Error init mongodb")
-	}
+    err := odm.Init(odm.Config{
+        ConnectionString: os.Getenv("MONGO_SERVER"),
+        Database:         os.Getenv("MONGO_DATABASE"),
+    }, false)
+    if err != nil {
+        log.Fatal("Error init mongodb")
+    }
 }
 ```
 
