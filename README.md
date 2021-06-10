@@ -1,8 +1,16 @@
 # Go Api
 
-Build on top of gin, goapi is a an extension of services to manage easily automatic logic in the creation of resources.
+Build on top of gin and gorm, goapi is a an extension of services to manage easily automatic logic in the creation of resources.
 
 ## Documentation
+
+### Built on top of
+
+- Gin router (https://github.com/gin-gonic/gin/edit/master/README.md)
+- ORM Gorm (https://gorm.io/index.html)
+- ODM Go bongo (https://github.com/go-bongo/bongo)
+
+### Summary
 
 * [Installation](#installation)
 * [Getting started](#getting-started)
