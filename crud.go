@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package ginh
+package easyapi
 
 import (
 	"fmt"
@@ -10,10 +10,11 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/event"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/security"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/utils"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/event"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 )
 
 // Gin handler for a POST request
@@ -79,14 +80,14 @@ func HandleGet(c *gin.Context, i interface{}, id string) {
 }
 
 // Gin handler for a LIST request
-func HandleGetAll(c *gin.Context, i interface{}) {
+func HandleList(c *gin.Context, i interface{}) {
 	ic := utils.CloneInterface(i) // avoid duplicate variable use
 
 	// Pagination
 	var pf *dao.PaginationFilter
 	var pQueryName string
-	var pc PaginationConfig
-	if ipa, ok := i.(PaginationAware); ok {
+	var pc layer.PaginationConfig
+	if ipa, ok := i.(layer.PaginationAware); ok {
 		pc = ipa.GetPaginationConfig()
 		pQueryName = pc.QueryParamName
 		pf = pc.GetPaginationFilterFromContext(c)
@@ -94,7 +95,7 @@ func HandleGetAll(c *gin.Context, i interface{}) {
 
 	// Check filters from
 	var ff []dao.FilterFunc
-	if iqfa, ok := ic.(QueryFilterAware); ok {
+	if iqfa, ok := ic.(layer.QueryFilterAware); ok {
 		for key, val := range c.Request.URL.Query() {
 			if key == pQueryName {
 				continue
@@ -237,7 +238,7 @@ func CRUDL(r gin.IRoutes, path string, i interface{}, methods string) {
 	}
 	if strings.Contains(methods, "L") {
 		r.GET(path, func(c *gin.Context) {
-			HandleGetAll(c, i)
+			HandleList(c, i)
 		})
 	}
 }

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package ginh
+package layer
 
 import (
 	"math"
@@ -10,7 +10,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
 )
 
 const (

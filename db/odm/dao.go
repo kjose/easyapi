@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/go-bongo/bongo"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/utils"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 	"gopkg.in/mgo.v2/bson"
 )
 

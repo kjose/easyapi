@@ -7,8 +7,8 @@ package orm
 import (
 	"strings"
 
-	"gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/utils"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 	"gorm.io/gorm"
 )
 

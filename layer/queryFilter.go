@@ -2,9 +2,9 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package ginh
+package layer
 
-import "gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
+import "gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
 
 // Function type to implement to create custom filters handlers in a DAO
 type QueryFilterFunc func(string, string, interface{}) dao.FilterFunc

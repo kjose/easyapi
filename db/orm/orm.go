@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	"gitlab.com/kjose/jgmc/api/internal/goapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

@@ -2,9 +2,12 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package ginh
+package easyapi
 
-import "gitlab.com/kjose/jgmc/api/internal/goapi/security"
+import (
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
+)
 
 // Create a new item single response
 func NewItem(i interface{}, sc *security.SerializeGroups) interface{} {
@@ -15,7 +18,7 @@ type CollectonItem struct {
 	Items []interface{} `json:"items"`
 	Count int           `json:"count,omitempty"`
 	Total int           `json:"total,omitempty"`
-	Links *Links        `json:"_links,omitempty"`
+	Links *layer.Links  `json:"_links,omitempty"`
 }
 
 // Create a new item collection response

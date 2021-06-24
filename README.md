@@ -1,6 +1,6 @@
-# Go Api
+# Easy Api
 
-Build on top of gin and gorm, goapi is a an extension of services to manage easily automatic logic in the creation of resources.
+Build on top of gin and gorm, Easyapi is a an extension of services to manage easily automatic logic in the creation of resources.
 
 ## Documentation
 
@@ -14,7 +14,7 @@ Build on top of gin and gorm, goapi is a an extension of services to manage easi
 
 * [Installation](#installation)
 * [Getting started](#getting-started)
-* [Extending goapi](#extending-go-api)
+* [Extending easyapi](#extending-go-api)
 * [Create a CRUD route](#create-a-crud-route)
 
 ## Installation
@@ -24,7 +24,7 @@ Build on top of gin and gorm, goapi is a an extension of services to manage easi
 ```
 
 
-## Getting started
+## Documentation
 
 ### Router
 
@@ -51,8 +51,8 @@ func main() {
     initODM()
 
     // Resources CRUD routes
-    ginh.CRUDL(r, "/users", new(model.User), "CRUL")
-    ginh.CRUDL(r, "/banks", new(model.Bank), "")
+    easyapi.CRUDL(r, "/users", new(model.User), "CRUL")
+    easyapi.CRUDL(r, "/banks", new(model.Bank), "")
 }
 
 func initORM() {
@@ -78,14 +78,36 @@ func initODM() {
 }
 ```
 
-## Extending go api
+### Security & Access management
 
 ```
 # 
 ```
 
-## Create a CRUD route
+### Resource validation
 
 ```
 # 
 ```
+
+### Resource serializer
+
+```
+# 
+```
+
+### Filtering & Pagination
+
+```
+# 
+```
+
+### Event manager
+
+```
+# 
+```
+
+
+
+

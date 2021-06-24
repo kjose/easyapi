@@ -6,7 +6,7 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/event"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/event"
 )
 
 // Middleware to add in gin configuration to add event listeners

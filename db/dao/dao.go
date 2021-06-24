@@ -4,7 +4,7 @@
 
 package dao
 
-import "gitlab.com/kjose/jgmc/api/internal/goapi/utils"
+import "gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 
 // Default DAO of application, it is used when a resource has no custom DAO configured
 var defaultDAO DAOInterface

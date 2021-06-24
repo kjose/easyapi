@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/ginh"
-	"gitlab.com/kjose/jgmc/api/internal/goapi/security"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
 )
 
 // Middleware to check the token sent in the header
@@ -22,7 +22,7 @@ func SecurityTokenMiddleware() gin.HandlerFunc {
 		if err != nil {
 			tkn = c.GetHeader("Authorization")
 			if tkn == "" {
-				ginh.HttpError(c, http.StatusUnauthorized, "Authorization token is required", nil)
+				easyapi.HttpError(c, http.StatusUnauthorized, "Authorization token is required", nil)
 				c.Abort()
 				return
 			}
@@ -31,12 +31,12 @@ func SecurityTokenMiddleware() gin.HandlerFunc {
 
 		tknData, err := security.ParseToken(tkn)
 		if err != nil {
-			ginh.HttpError(c, http.StatusUnauthorized, "Authorization token is invalid", nil)
+			easyapi.HttpError(c, http.StatusUnauthorized, "Authorization token is invalid", nil)
 			c.Abort()
 			return
 		}
 
-		c.Set(ginh.CONTEXT_KEY_TOKEN, tknData)
+		c.Set(easyapi.CONTEXT_KEY_TOKEN, tknData)
 
 		c.Next()
 	}

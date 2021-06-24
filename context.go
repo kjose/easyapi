@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package ginh
+package easyapi
 
 const (
 	CONTEXT_KEY_TOKEN = "ctx.auth.token"
