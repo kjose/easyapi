@@ -2,18 +2,15 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package security
+package easyapi
 
 import (
 	"os"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
 )
-
-type TokenInterface interface {
-	GetTokenInformations() interface{}
-}
 
 type Token struct {
 	Value     string
@@ -26,7 +23,7 @@ type claims struct {
 }
 
 // Generate a JWT token
-func GenerateToken(t TokenInterface, duration time.Duration) *Token {
+func GenerateToken(t layer.TokenInterface, duration time.Duration) *Token {
 	jwtKey := []byte(os.Getenv("JWT_TOKEN_KEY"))
 	expirationDate := time.Now().Add(duration).Unix()
 	claims := claims{

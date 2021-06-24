@@ -6,12 +6,11 @@ package easyapi
 
 import (
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
-	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
 )
 
 // Create a new item single response
-func NewItem(i interface{}, sc *security.SerializeGroups) interface{} {
-	return security.Serialize(i, sc)
+func NewItem(i interface{}, sc *layer.SerializeGroups) interface{} {
+	return Serialize(i, sc)
 }
 
 type CollectonItem struct {
@@ -22,10 +21,10 @@ type CollectonItem struct {
 }
 
 // Create a new item collection response
-func NewCollectionItem(items []interface{}, sc *security.SerializeGroups) *CollectonItem {
+func NewCollectionItem(items []interface{}, sc *layer.SerializeGroups) *CollectonItem {
 	collection := make([]interface{}, 0)
 	for _, i := range items {
-		security.Serialize(i, sc)
+		Serialize(i, sc)
 		collection = append(collection, i)
 	}
 	return &CollectonItem{

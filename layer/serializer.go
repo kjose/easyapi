@@ -2,12 +2,7 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package security
-
-const (
-	SERIALIZER_CONTEXT_KEY_ONE  = "one"
-	SERIALIZER_CONTEXT_KEY_LIST = "list"
-)
+package layer
 
 // Interface to implement in a resource to support serialization
 type SerializeAware interface {
@@ -36,12 +31,4 @@ func (sc *SerializeGroups) WithValue(value string) *SerializeGroups {
 	}
 	sc.Values = append(sc.Values, value)
 	return sc
-}
-
-// Serialize a resource (aware of Interface or not)
-func Serialize(i interface{}, sc *SerializeGroups) interface{} {
-	if is, ok := i.(SerializeAware); ok {
-		return is.Serialize(sc)
-	}
-	return i
 }

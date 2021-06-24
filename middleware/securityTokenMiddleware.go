@@ -11,7 +11,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"gitlab.com/kjose/jgmc/api/internal/easyapi"
-	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
 )
 
 // Middleware to check the token sent in the header
@@ -29,7 +28,7 @@ func SecurityTokenMiddleware() gin.HandlerFunc {
 			tkn = strings.Replace(tkn, "Bearer ", "", 1)
 		}
 
-		tknData, err := security.ParseToken(tkn)
+		tknData, err := easyapi.ParseToken(tkn)
 		if err != nil {
 			easyapi.HttpError(c, http.StatusUnauthorized, "Authorization token is invalid", nil)
 			c.Abort()

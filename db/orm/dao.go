@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
+	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 	"gorm.io/gorm"
 )
@@ -48,6 +49,13 @@ func (rdao *relationalDAO) FindByFilter(dest interface{}, ff []dao.FilterFunc, p
 	if pf != nil {
 		st.Count(&ret.totalCount)
 		st = st.Limit(pf.Limit).Offset(pf.Offset)
+	}
+
+	// Joins with linked entities
+	if stb, ok := dest.(layer.UUIDBinderInterface); ok {
+		for _, b := range stb.GetUUIDBindings() {
+			st = st.Joins(b.Name)
+		}
 	}
 
 	r, err := st.Rows()

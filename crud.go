@@ -13,7 +13,6 @@ import (
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/db/dao"
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/event"
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/layer"
-	"gitlab.com/kjose/jgmc/api/internal/easyapi/security"
 	"gitlab.com/kjose/jgmc/api/internal/easyapi/utils"
 )
 
@@ -48,8 +47,8 @@ func HandlePost(c *gin.Context, i interface{}) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, NewItem(ic, &security.SerializeGroups{
-		Values: []string{security.SERIALIZER_CONTEXT_KEY_ONE},
+	c.JSON(http.StatusCreated, NewItem(ic, &layer.SerializeGroups{
+		Values: []string{SERIALIZER_CONTEXT_KEY_ONE},
 	}))
 }
 
@@ -74,8 +73,8 @@ func HandleGet(c *gin.Context, i interface{}, id string) {
 		return
 	}
 
-	c.JSON(http.StatusOK, NewItem(ic, &security.SerializeGroups{
-		Values: []string{security.SERIALIZER_CONTEXT_KEY_ONE},
+	c.JSON(http.StatusOK, NewItem(ic, &layer.SerializeGroups{
+		Values: []string{SERIALIZER_CONTEXT_KEY_ONE},
 	}))
 }
 
@@ -133,8 +132,8 @@ func HandleList(c *gin.Context, i interface{}) {
 		}
 	}
 
-	collectionItems := NewCollectionItem(all, &security.SerializeGroups{
-		Values: []string{security.SERIALIZER_CONTEXT_KEY_LIST},
+	collectionItems := NewCollectionItem(all, &layer.SerializeGroups{
+		Values: []string{SERIALIZER_CONTEXT_KEY_LIST},
 	})
 	collectionItems.Count = len(all)
 	collectionItems.Total = r.CountTotal()
